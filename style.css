@@ -1,4 +1,3 @@
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 /* Basic Resets & Variables */
@@ -6,11 +5,12 @@
     --primary-color: #007bff;
     --secondary-color: #6c757d;
     --accent-color: #28a745;
-    --dark-bg: #1a1a1a; 
-    --card-bg: #242424; 
-    --text-color: #e0e0e0; 
+    --dark-bg: #343a40;
+    --light-bg: #f8f9fa;
+    --text-color: #333;
     --white-color: #ffffff;
-    --border-radius: 10px; 
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 8px;
 }
 
 * {
@@ -23,7 +23,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--dark-bg);
+    background-color: var(--white-color); /* Light background for the body */
 }
 
 /* Container */
@@ -35,15 +35,14 @@ body {
 
 /* Header & Navigation */
 header {
-    background: rgba(26, 26, 26, 0.8); 
-    backdrop-filter: blur(10px); 
+    background: var(--dark-bg);
     color: var(--white-color);
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 nav {
@@ -81,32 +80,23 @@ nav a:hover {
     color: var(--primary-color);
 }
 
-/* Animated Hero Section */
-@keyframes animated-gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
+/* Hero Section */
 .hero-section {
-    color: var(--white-color);
+    background: var(--light-bg);
+    color: var(--dark-bg);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding-top: 80px;
-    background: linear-gradient(135deg, #0d324d, #7f5a83, #1a1a1a, #0d324d);
-    background-size: 300% 300%;
-    animation: animated-gradient 15s ease infinite;
 }
 
 .hero-content h1 {
     font-size: 4rem;
     margin-bottom: 10px;
     font-weight: 700;
-    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(40, 167, 69, 0.5);
-    background: -webkit-linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    background: -webkit-linear-gradient(45deg, var(--primary-color), var(--dark-bg));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -118,22 +108,22 @@ nav a:hover {
     overflow: hidden;
     margin: 0 auto 30px auto;
     border: 5px solid var(--primary-color);
-    box-shadow: 0 0 25px rgba(0, 123, 255, 0.7);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
 }
 .profile-pic { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-content .tagline { font-size: 1.5rem; margin-bottom: 40px; font-weight: 300; }
 .social-links { margin-top: 30px; }
-.social-links a { color: var(--white-color); margin: 0 15px; font-size: 1.8rem; transition: color 0.3s ease, transform 0.3s ease; }
-.social-links a:hover { color: var(--primary-color); transform: translateY(-5px) scale(1.1); }
+.social-links a { color: var(--dark-bg); margin: 0 15px; font-size: 1.8rem; transition: color 0.3s ease, transform 0.3s ease; }
+.social-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
 
 
 /* General Section Styling */
 .section-padded {
     padding: 80px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #eee;
 }
 .section-padded.bg-light{
-    background-color: #1f1f1f;
+    background-color: var(--light-bg);
 }
 
 /* Section Titles */
@@ -141,13 +131,9 @@ h2 {
     text-align: center;
     margin-bottom: 50px;
     font-size: 2.8rem;
+    color: var(--dark-bg);
     position: relative;
     padding-bottom: 15px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
 }
 h2 i { color: var(--primary-color); }
 h2::after {
@@ -160,71 +146,52 @@ h2::after {
     height: 4px;
     background-color: var(--primary-color);
     border-radius: 2px;
-    box-shadow: 0 0 10px var(--primary-color);
 }
 
-/* Card Effects */
+/* Card Styling */
 .card {
-    background: var(--card-bg);
+    background: var(--white-color);
     padding: 30px;
     border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative; 
-    overflow: hidden;  
-}
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; 
-    width: 75%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: skewX(-25deg);
-    transition: left 0.7s ease;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e9ecef;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-    border-color: var(--primary-color);
-}
-
-.card:hover::before {
-    left: 120%; 
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.6rem; }
-.card p { margin-bottom: 10px; color: #ccc; }
+.card p { margin-bottom: 10px; color: #555; }
 .card .institution, .card .company { font-weight: 600; color: var(--secondary-color); font-size: 1.1rem; }
-.card .duration, .card .grade { font-style: italic; color: #aaa; font-size: 0.95rem; }
+.card .duration, .card .grade { font-style: italic; color: #777; font-size: 0.95rem; }
 
 
 /* Skills Section */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; text-align: center; }
-.skill-category { background: var(--card-bg); padding: 25px; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-.skill-category:hover { transform: translateY(-8px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); border-color: var(--primary-color); }
-.skill-category h4 { font-size: 1.4rem; color: var(--white-color); margin-bottom: 15px; }
+.skill-category { background: var(--white-color); padding: 25px; border-radius: var(--border-radius); box-shadow: var(--card-shadow); transition: transform 0.3s ease; }
+.skill-category:hover { transform: translateY(-8px); }
+.skill-category h4 { font-size: 1.4rem; color: var(--dark-bg); margin-bottom: 15px; }
 .skill-category h4 i { color: var(--primary-color); margin-right: 10px; }
-.skill-category span { display: block; font-size: 1.1rem; color: #ccc; line-height: 1.8; }
+.skill-category span { display: block; font-size: 1.1rem; color: var(--text-color); line-height: 1.8; }
 
 
 /* Project & Experience Cards */
 .project-card .tech-stack { font-weight: 600; color: var(--accent-color); margin-bottom: 15px; }
 .experience-card ul, .project-card ul { list-style-type: disc; padding-left: 20px; margin-top: 15px; }
-.experience-card li, .project-card li { margin-bottom: 8px; color: #aaa; }
+.experience-card li, .project-card li { margin-bottom: 8px; color: #555; }
 
 
 /* Certifications Section */
 .card-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.certification-card { min-width: 280px; text-align: center; font-weight: 600; color: var(--text-color); background-color: var(--card-bg); padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); }
+.certification-card { min-width: 280px; text-align: center; font-weight: 600; color: var(--text-color); background-color: var(--light-bg); padding: 20px; border: 1px solid #dee2e6; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; }
 .certification-card:hover { background-color: var(--primary-color); color: var(--white-color); transform: translateY(-5px); }
 
 
 /* Footer */
-footer { text-align: center; padding: 30px; background: #111; color: var(--white-color); font-size: 0.9rem; margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+footer { text-align: center; padding: 30px; background: var(--dark-bg); color: var(--white-color); font-size: 0.9rem; margin-top: 50px; }
 
 
 /* Responsive Design */
