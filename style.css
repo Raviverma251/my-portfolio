@@ -6,12 +6,13 @@
     --primary-color: #007bff;
     --secondary-color: #6c757d;
     --accent-color: #28a745;
-    --dark-bg: #212529;
+    --dark-bg: #1a1a1a; /* Thoda aur dark */
+    --card-bg: #242424; /* Card ke liye dark color */
     --light-bg: #f8f9fa;
-    --text-color: #343a40;
+    --text-color: #e0e0e0; /* Light text for dark bg */
     --white-color: #ffffff;
-    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --border-radius: 8px;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 10px; /* Thoda zyada rounded */
 }
 
 * {
@@ -24,10 +25,10 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--light-bg);
+    background-color: var(--dark-bg);
 }
 
-/* Container for Centering Content */
+/* Container */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -36,14 +37,15 @@ body {
 
 /* Header & Navigation */
 header {
-    background: var(--dark-bg);
+    background: rgba(26, 26, 26, 0.8); /* Semi-transparent */
+    backdrop-filter: blur(10px); /* Glass effect */
     color: var(--white-color);
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: var(--card-shadow);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav {
@@ -81,23 +83,39 @@ nav a:hover {
     color: var(--primary-color);
 }
 
-/* Hero Section */
+/* ================================= */
+/* === KHATARNAK HERO SECTION === */
+/* ================================= */
+@keyframes animated-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .hero-section {
-    background: linear-gradient(135deg, var(--dark-bg) 0%, #4a5a6a 100%);
     color: var(--white-color);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 80px; /* Offset for fixed header */
+    padding-top: 80px;
+    background: linear-gradient(135deg, #0d324d, #7f5a83, #1a1a1a, #0d324d);
+    background-size: 300% 300%;
+    animation: animated-gradient 15s ease infinite;
 }
 
-.hero-content {
-    max-width: 800px;
-    padding: 20px;
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(40, 167, 69, 0.5);
+    background: -webkit-linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* Other hero styles... */
 .profile-pic-container {
     width: 180px;
     height: 180px;
@@ -105,74 +123,40 @@ nav a:hover {
     overflow: hidden;
     margin: 0 auto 30px auto;
     border: 5px solid var(--primary-color);
-    box-shadow: 0 0 0 7px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.7);
 }
+.profile-pic { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-content .tagline { font-size: 1.5rem; margin-bottom: 40px; font-weight: 300; }
+.social-links { margin-top: 30px; }
+.social-links a { color: var(--white-color); margin: 0 15px; font-size: 1.8rem; transition: color 0.3s ease, transform 0.3s ease; }
+.social-links a:hover { color: var(--primary-color); transform: translateY(-5px) scale(1.1); }
 
-.profile-pic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-    background: -webkit-linear-gradient(45deg, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero-content .tagline {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-
-.social-links {
-    margin-top: 30px;
-}
-
-.social-links a {
-    color: var(--white-color);
-    margin: 0 15px;
-    font-size: 1.8rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--primary-color);
-    transform: translateY(-5px);
-}
 
 /* General Section Styling */
 .section-padded {
     padding: 80px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+.section-padded:nth-child(even) { background-color: var(--dark-bg); }
+.section-padded:nth-child(odd) { background-color: #1f1f1f; }
 
-.section-padded:nth-child(odd) {
-    background-color: var(--light-bg);
-}
 
-.section-padded:nth-child(even) {
-    background-color: var(--white-color);
-}
-
+/* ================================= */
+/* === KHATARNAK SECTION TITLES === */
+/* ================================= */
 h2 {
     text-align: center;
     margin-bottom: 50px;
     font-size: 2.8rem;
-    color: var(--dark-bg);
     position: relative;
     padding-bottom: 15px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
 }
-
-h2 i {
-    color: var(--primary-color);
-    margin-right: 15px;
-}
-
+h2 i { color: var(--primary-color); }
 h2::after {
     content: '';
     position: absolute;
@@ -183,199 +167,93 @@ h2::after {
     height: 4px;
     background-color: var(--primary-color);
     border-radius: 2px;
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
-/* Card Layouts */
-.grid-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
 
+/* ================================= */
+/* === KHATARNAK CARD EFFECTS === */
+/* ================================= */
 .card {
-    background: var(--white-color);
+    background: var(--card-bg);
     padding: 30px;
     border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Hover effect ke liye zaroori */
+    overflow: hidden;   /* Hover effect ke liye zaroori */
+}
+
+/* Card par shine effect */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Shuru me screen se bahar */
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.7s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-color);
 }
 
-.card h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.6rem;
+.card:hover::before {
+    left: 120%; /* Hover par screen ke paar */
 }
 
-.card p {
-    margin-bottom: 10px;
-}
+/* Other card styles... */
+.card h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.6rem; }
+.card p { margin-bottom: 10px; color: #ccc; }
+.card .institution, .card .company { font-weight: 600; color: var(--secondary-color); font-size: 1.1rem; }
+.card .duration, .card .grade { font-style: italic; color: #aaa; font-size: 0.95rem; }
 
-.card .institution, .card .company {
-    font-weight: 600;
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-}
-
-.card .duration, .card .grade {
-    font-style: italic;
-    color: #666;
-    font-size: 0.95rem;
-}
 
 /* Skills Section */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    text-align: center;
-}
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; text-align: center; }
+.skill-category { background: var(--card-bg); padding: 25px; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.skill-category:hover { transform: translateY(-8px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); border-color: var(--primary-color); }
+.skill-category h4 { font-size: 1.4rem; color: var(--white-color); margin-bottom: 15px; }
+.skill-category h4 i { color: var(--primary-color); margin-right: 10px; }
+.skill-category span { display: block; font-size: 1.1rem; color: #ccc; line-height: 1.8; }
 
-.skill-category {
-    background: var(--white-color);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skill-category:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-}
-
-.skill-category h4 {
-    font-size: 1.4rem;
-    color: var(--dark-bg);
-    margin-bottom: 15px;
-}
-
-.skill-category h4 i {
-    color: var(--primary-color);
-    margin-right: 10px;
-}
-
-.skill-category span {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--text-color);
-    line-height: 1.8;
-}
 
 /* Project & Experience Cards */
-.project-card .tech-stack {
-    font-weight: 600;
-    color: var(--accent-color);
-    margin-bottom: 15px;
-}
+.project-card .tech-stack { font-weight: 600; color: var(--accent-color); margin-bottom: 15px; }
+.experience-card ul, .project-card ul { list-style-type: disc; padding-left: 20px; margin-top: 15px; }
+.experience-card li, .project-card li { margin-bottom: 8px; color: #aaa; }
 
-.experience-card ul, .project-card ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-top: 15px;
-}
-
-.experience-card li, .project-card li {
-    margin-bottom: 8px;
-    color: #555;
-}
 
 /* Certifications Section */
-.card-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
+.card-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.certification-card { min-width: 280px; text-align: center; font-weight: 600; color: var(--text-color); background-color: var(--card-bg); padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); }
+.certification-card:hover { background-color: var(--primary-color); color: var(--white-color); transform: translateY(-5px); }
 
-.certification-card {
-    min-width: 280px;
-    text-align: center;
-    font-weight: 600;
-    color: var(--text-color);
-    background-color: #e9ecef;
-    padding: 20px;
-    border: 1px solid #dee2e6;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.certification-card:hover {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    transform: translateY(-5px);
-}
 
 /* Footer */
-footer {
-    text-align: center;
-    padding: 30px;
-    background: var(--dark-bg);
-    color: var(--white-color);
-    font-size: 0.9rem;
-    margin-top: 50px;
-}
+footer { text-align: center; padding: 30px; background: #111; color: var(--white-color); font-size: 0.9rem; margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav ul {
-        margin-top: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav ul li {
-        margin: 0 10px 10px 10px;
-    }
-
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-
-    .hero-content .tagline {
-        font-size: 1.2rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    .grid-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .card {
-        padding: 25px;
-    }
-    
-    .certification-card {
-        min-width: unset;
-        width: 100%;
-    }
+    nav { flex-direction: column; text-align: center; }
+    nav ul { margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+    nav ul li { margin: 0 10px 10px 10px; }
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content .tagline { font-size: 1.2rem; }
+    h2 { font-size: 2rem; }
+    .grid-layout, .skills-grid { grid-template-columns: 1fr; }
+    .card { padding: 25px; }
+    .certification-card { min-width: unset; width: 100%; }
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content .tagline {
-        font-size: 1rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content .tagline { font-size: 1rem; }
+    h2 { font-size: 1.8rem; }
 }
